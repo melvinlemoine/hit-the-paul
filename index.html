@@ -1,20 +1,35 @@
 <!DOCTYPE html>
 
 <html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Integration virgin template</title>
 
-    <head>
-        <meta charset="UTF-8">
-        <title>Integration virgin template</title>
-    
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        
-        <link rel="stylesheet" href="assets/css/reset.css" />
-        <link rel="stylesheet" href="assets/css/styles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    </head>
+    <link rel="stylesheet" href="assets/css/reset.css" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
 
-<body>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+      integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
 
-</body>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  </head>
 
+  <body class="body">
+    <img class="paul" id="paul" src="assets/images/paul.png" alt="Paul" />
+    <button class="start" id="launchButton" onclick="launchGame()">Play</button>
+    <script src="game.js"></script>
+    <div class="countdown" id="countdown">
+      <p class="countdown__number countdown__number--3">3</p>
+      <p class="countdown__number countdown__number--2">2</p>
+      <p class="countdown__number countdown__number--1">1</p>
+    </div>
+  </body>
 </html>
