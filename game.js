@@ -14,14 +14,20 @@ let delay;
 
 function launchGame() {
   console.log("▶️ launchGame");
-  randomPosition();
+  disableLaunchButton();
+  $("#paul").css("transition", "bottom .5s ease-in-out");
+  $("#paul").css("bottom", "-15rem");
+
+  setTimeout(function () {
+    randomPosition();
+  }, 500);
 }
 
 function randomPosition() {
   delay = randomDelay();
 
   randomSide = sides[Math.floor(Math.random() * 4 - 1) + 1];
-  randomTranslate = Math.floor(Math.random() * 90 - 1) + 1;
+  randomTranslate = Math.floor(Math.random() * 85 - 1) + 1;
   //   randomX = Math.floor(Math.random() * 2 - 0) + 0;
 
   console.log("randomSide : " + randomSide);
@@ -30,33 +36,73 @@ function randomPosition() {
 
   $("#paul").css({ top: "initial", right: "initial", bottom: "initial", left: "initial" });
 
+  $("#paul").css("transition-property", "none");
+  $("#paul").attr("src", "./assets/images/paul.png");
+
   switch (randomSide) {
     case "top":
-      $("#paul").css("bottom", "90%");
-      $("#paul").css("transform", "rotate(180deg)");
+      $("#paul").css("top", "-15rem");
       $("#paul").css("left", randomTranslate + "%");
+      $("#paul").css("transform", "rotate(180deg)");
+      setTimeout(function () {
+        $("#paul").css("transition", "top .5s ease-in-out");
+        $("#paul").css("top", "0rem");
+        setTimeout(function () {
+          $("#paul").css("top", "-15rem");
+        }, 1500);
+      }, 50);
       break;
     case "right":
-      $("#paul").css("left", "90%");
-      $("#paul").css("transform", "rotate(-90deg)");
+      $("#paul").css("right", "-15rem");
       $("#paul").css("top", randomTranslate + "%");
+      $("#paul").css("transform", "rotate(-90deg)");
+      setTimeout(function () {
+        $("#paul").css("transition", "right .5s ease-in-out");
+        $("#paul").css("right", "0rem");
+        setTimeout(function () {
+          $("#paul").css("right", "-15rem");
+        }, 1500);
+      }, 50);
       break;
     case "bottom":
-      $("#paul").css("top", "90%");
-      $("#paul").css("transform", "rotate(0deg)");
+      $("#paul").css("bottom", "-15rem");
       $("#paul").css("left", randomTranslate + "%");
+      $("#paul").css("transform", "rotate(0deg)");
+      setTimeout(function () {
+        $("#paul").css("transition", "bottom .5s ease-in-out");
+        $("#paul").css("bottom", "0rem");
+        setTimeout(function () {
+          $("#paul").css("bottom", "-15rem");
+        }, 1500);
+      }, 50);
       break;
     case "left":
-      $("#paul").css("right", "90%");
-      $("#paul").css("transform", "rotate(90deg)");
+      $("#paul").css("left", "-15rem");
       $("#paul").css("top", randomTranslate + "%");
+      $("#paul").css("transform", "rotate(90deg)");
+      setTimeout(function () {
+        $("#paul").css("transition", "left .5s ease-in-out");
+        $("#paul").css("left", "0rem");
+        setTimeout(function () {
+          $("#paul").css("left", "-15rem");
+        }, 1500);
+      }, 50);
       break;
   }
 
   setTimeout(function () {
     randomPosition();
-  }, delay);
+  }, 3000);
 }
+
+$("#paul").click(function () {
+  hitsound = Math.floor(Math.random() * 5 - 1) + 1;
+  $(".hitsound")[hitsound].pause();
+  $(".hitsound")[hitsound].currentTime = 0;
+  console.log("Hit paul !");
+  $(".hitsound")[hitsound].play();
+  $(this).attr("src", "./assets/images/paul-hit.png");
+});
 
 function randomDelay() {
   delay = Math.floor(Math.random() * 3000 - 1000) + 1000;

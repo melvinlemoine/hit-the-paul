@@ -33,11 +33,13 @@
   }
 }
 
-.paul {
+.paul, .paul2 {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 10vw;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 15rem;
+  cursor: pointer;
 }
 
 .start {
